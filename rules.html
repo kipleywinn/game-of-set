@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SET Game Rules</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="rulesPage">
+<div id="header">
+  <div class="flex"><h1>SET Game Rules</h1>
+    <a href="index.html"><button id="playGame" class="btn btn-open">Play Game</button></a></div>
+</div>
+<div id="mainContent">
+  <div id="fourProperties">
+    <h2>Card Properties</h2>
+    <p>Each card has 4 properties: number, color, shape, and shading.</p>
+    <div class="bottomBorder">
+      <h3>Number</h3>
+      <p>Each card has 1, 2, or 3 shapes on it.</p>
+      <div id="numberProp"></div>
+    </div>
+
+    <div class="bottomBorder">
+      <h3>Color</h3>
+      <p>Each card is colored pink, green, or purple.</p>
+      <div id="colorProp"></div>
+    </div>
+
+    <div class="bottomBorder">
+      <h3>Shape</h3>
+      <p>Each card is in the shape of a circle, square, or triangle.</p>
+      <div id="shapeProp"></div>
+    </div>
+
+    <div class="bottomBorder">
+      <h3>Shading</h3>
+      <p>Each card is shaded as solid, striped, or empty.</p>
+      <div id="shadingProp"></div>
+    </div>
+
+  </div>
+  <div id="whatIsASet" class="bottomBorder">
+    <h2>What is a <em>SET</em>?</h2>
+    <p>A <em>SET</em> consist of 3 cards in which each of the cards' properties, when looked at individually, must be either the same on each card or different on each card.
+      <br><br>
+      To say it the long way: the number of shapes on each card in the <em>SET</em> must be all the same or all different; the color of each card in the <em>SET</em> must be all the same or all different; the shape of each card in the <em>SET</em> must be all the same or all different; and the shading of each card in the <em>SET</em> must be all the same or all different. </p>
+    <h3>Quick Check</h3>
+    <p>To quickly check the validity of your <em>SET</em>, see if any of the properties have 2 of the same with only 1 different option. For example, are there 2 green cards and 1 pink card? Are there 2 solid cards but 1 striped? Any combination where this happens is automatically <strong>not a set</strong>.</p>
+  </div>
+  <div id="exampleSets">
+    <h2>Example <strong>SETs</strong></h2>
+    <p>Test yourself! See if you can build the third card of each set correctly.</p>
+    <div class="bottomBorder">
+      <h3>Example 1</h3>
+      <div id="example1a"></div>
+      <div id="example1b"></div>
+      <div id="example1c">
+        <label for="number1">Number:</label>
+        <select id="number1" onchange="drawExampleCard(1)">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+        <label for="color1">Color:</label>
+        <select id="color1" onchange="drawExampleCard(1)">
+          <option value="0">Pink</option>
+          <option value="1">Green</option>
+          <option value="2">Purple</option>
+        </select>
+        <label for="shape1">Shape:</label>
+        <select id="shape1" onchange="drawExampleCard(1)">
+          <option value="0">Circle</option>
+          <option value="1">Square</option>
+          <option value="2">Triangle</option>
+        </select>
+        <label for="shading1">Shading:</label>
+        <select id="shading1" onchange="drawExampleCard(1)">
+          <option value="0">Solid</option>
+          <option value="1">Striped</option>
+          <option value="2">Empty</option>
+        </select>
+      </div>
+      <div class="checkYourself">
+        <button id="checkExample1" onclick="checkExample(1)">Check Example 1</button>
+        <div id="checkMessage1" class="hidden"></div>
+      </div>
+    </div>
+    <div class="bottomBorder">
+      <h3>Example 2</h3>
+      <div id="example2a"></div>
+      <div id="example2b"></div>
+      <div id="example2c">
+        <label for="number2">Number:</label>
+        <select id="number2" onchange="drawExampleCard(2)">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+        <label for="color2">Color:</label>
+        <select id="color2" onchange="drawExampleCard(2)">
+          <option value="0">Pink</option>
+          <option value="1">Green</option>
+          <option value="2">Purple</option>
+        </select>
+        <label for="shape2">Shape:</label>
+        <select id="shape2" onchange="drawExampleCard(2)">
+          <option value="0">Circle</option>
+          <option value="1">Square</option>
+          <option value="2">Triangle</option>
+        </select>
+        <label for="shading2">Shading:</label>
+        <select id="shading2" onchange="drawExampleCard(2)">
+          <option value="0">Solid</option>
+          <option value="1">Striped</option>
+          <option value="2">Empty</option>
+        </select>
+      </div>
+      <div class="checkYourself">
+        <button id="checkExample2" onclick="checkExample(2)">Check Example 2</button>
+        <div id="checkMessage2" class="hidden"></div>
+      </div>
+    </div>
+    <div class="bottomBorder">
+      <h3>Example 3</h3>
+      <div id="example3a"></div>
+      <div id="example3b"></div>
+      <div id="example3c">
+        <label for="number3">Number:</label>
+        <select id="number3" onchange="drawExampleCard(3)">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+        <label for="color3">Color:</label>
+        <select id="color3" onchange="drawExampleCard(3)">
+          <option value="0">Pink</option>
+          <option value="1">Green</option>
+          <option value="2">Purple</option>
+        </select>
+        <label for="shape3">Shape:</label>
+        <select id="shape3" onchange="drawExampleCard(3)">
+          <option value="0">Circle</option>
+          <option value="1">Square</option>
+          <option value="2">Triangle</option>
+        </select>
+        <label for="shading3">Shading:</label>
+        <select id="shading3" onchange="drawExampleCard(3)">
+          <option value="0">Solid</option>
+          <option value="1">Striped</option>
+          <option value="2">Empty</option>
+        </select>
+      </div>
+      <div class="checkYourself">
+        <button id="checkExample3" onclick="checkExample(3)">Check Example 3</button>
+        <div id="checkMessage3" class="hidden"></div>
+      </div>
+    </div>
+    <a href="index.html">Back to the game</a>
+  </div>
+
+</div>
+</div>
+<script src="js/rules.js"></script>
+</body>
+</html>

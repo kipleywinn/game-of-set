@@ -1,0 +1,95 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="description" content="">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+  <meta property="og:image:alt" content="">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.png">
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+
+<div id="header">
+  <div class="flex"><h1>SET Card Game</h1>
+    <button id="rulesButton" class="btn btn-open">Game Rules</button></div>
+  <div>
+    <section id="rulesPopup" class="modal hidden">
+      <button id="closeRules" class="btn-close">⨉</button>
+      <h2>SET Rules</h2>
+      <p>Each card has 4 properties:</p>
+      <ul>
+        <li>Color (pink, purple, green)</li>
+        <li>Number (1, 2, 3)</li>
+        <li>Shape (square, circle, triangle)</li>
+        <li>Shading (solid, striped, empty)</li>
+      </ul>
+      <p>A set is formed by finding 3 cards so that each category is either all the same or all different across all 3 cards.</p>
+      <p>For example, you can have 3 pink cards, or one of each color, but not 2 pink and 1 green. You can have 3 cards with 2 shapes on them, or you can have 1-2-3, but not 2 with 1 shape and 1 with 3 shapes.</p>
+      <p>If you cannot find any sets on the board, use the shuffle button to re-deal from the remaining cards.</p>
+      <p><a href="rules.html">Need more help? Learn more and try some examples here.</a></p>
+
+    </section>
+    <div id="overlay" class="overlay hidden"></div>
+
+  </div>
+</div>
+<div id="gameControls">
+  <div id="container0">
+    <button id="newGame">New Game</button>
+    <button id="dealRestart" disabled>Deal/Restart</button>
+  </div>
+  <div id="multiplayerControls" class="hidden">
+    <div id="playerNamesForm">
+      <label for="numberOfPlayers">Number of Players:</label>
+      <select name="numberOfPlayers" id="numberOfPlayers" onchange="playerNamesInputs(this)">
+        <option value="0">Select one</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      </select>
+      <div id="playerNamesInputs"></div>
+      <button id="newGameContinue" disabled>Continue</button>
+    </div>
+    <div id="playerScores"></div>
+  </div>
+  <div id="container1">
+    <button id="testSet">Test Your Set</button>
+    <button id="dealThree" disabled>Continue</button>
+    <button id="unselectAllCards">Unselect All</button>
+    <button id="shuffleRemaining" disabled>Shuffle Remaining Cards</button>
+    <button id="getAHint">Get a Hint</button>
+  </div>
+  <div id="container2">
+    <div id="cardsRemaining"></div>
+    <div id="messageContainer"></div>
+    <div id="setsFound"></div>
+  </div>
+
+</div>
+<div id="allCards">
+
+</div>
+
+<script src="js/app.js"></script>
+
+
+</body>
+
+</html>
