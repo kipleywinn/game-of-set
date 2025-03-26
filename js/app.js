@@ -614,17 +614,19 @@ let theTimer;
 let elapsedTime = 0;
 
 function startTimeCounter() {
-  let now = Math.floor(Date.now() / 1000); // get the time now
-  let diff = now - startTime; // diff in seconds between now and start
-  let m = Math.floor(diff / 60); // get minutes value (quotient of diff)
-  let s = Math.floor(diff % 60); // get seconds value (remainder of diff)
-  m = checkTime(m); // add a leading zero if it's single digit
-  s = checkTime(s); // add a leading zero if it's single digit
-  document.getElementById("gameTimer").innerHTML = `Game Timer: ${m}:${s}`; // update the element where the timer will appear
-  return theTimer = setTimeout(startTimeCounter, 1000); // set a timeout to update the timer
+  let now = Math.floor(Date.now() / 1000);
+  let diff = now - startTime; 
+  let h = Math.floor(diff / 3600);
+  let m = Math.floor((diff % 3600) / 60); 
+  let s = Math.floor(diff % 60);
+  h = padTime(h);
+  m = padTime(m);
+  s = padTime(s);
+  document.getElementById("gameTimer").innerHTML = `Game Timer: ${h}:${m}:${s}`;
+  return theTimer = setTimeout(startTimeCounter, 1000);
 }
 
-function checkTime(i) {
+function padTime(i) {
   if (i < 10) { i = `0${i}`}  // add zero in front of numbers < 10
   return i;
 }
@@ -655,7 +657,6 @@ function resumeGame() {
   pauseButton.classList.remove("hidden");
   allCardsDiv.classList.remove("paused");
 }
-
 
 
 
