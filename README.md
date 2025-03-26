@@ -1,0 +1,2 @@
+# Game of SET
+This is a recreation of the card game called SET. A work in progress as I continue to add new features and move some options around. It is multiplayer, but only if you're all looking at the same computer screen. I envisioned the screen being projected on a tv at the front of the room so a group of friends could play together as if they were playing with real cards on a table, but easier for everyone to see.
