@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
+  <title>Game of SET</title>
   <link rel="stylesheet" href="css/style.css">
   <meta name="description" content="">
 
@@ -51,6 +51,9 @@
   <div id="container0">
     <button id="newGame">New Game</button>
     <button id="dealRestart" disabled>Deal/Restart</button>
+    <button id="pauseButton" disabled>Pause Game</button>
+    <button id="resumeButton" class="hidden">Resume Game</button>
+    <div id="gameTimer"></div>
   </div>
   <div id="multiplayerControls" class="hidden">
     <div id="playerNamesForm">
@@ -70,11 +73,11 @@
     <div id="playerScores"></div>
   </div>
   <div id="container1">
-    <button id="testSet">Test Your Set</button>
+    <button id="testSet" disabled>Test Your Set</button>
     <button id="dealThree" disabled>Continue</button>
-    <button id="unselectAllCards">Unselect All</button>
+    <button id="unselectAllCards" disabled>Unselect All</button>
     <button id="shuffleRemaining" disabled>Shuffle Remaining Cards</button>
-    <button id="getAHint">Get a Hint</button>
+    <button id="getAHint" disabled>Get a Hint</button>
   </div>
   <div id="container2">
     <div id="cardsRemaining"></div>

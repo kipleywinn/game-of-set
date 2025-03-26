@@ -131,6 +131,9 @@ body {
   margin: 0 auto;
   justify-content: space-evenly;
 }
+#allCards.paused {
+  filter: blur(4rem);
+}
 canvas, .card {
   border: 2px solid #7e7e7e;
   border-radius: 10px;
@@ -178,7 +181,7 @@ button:hover {
 button:active {
   border-style: outset;
 }
-button:disabled, button[disabled], button:disabled:hover, button:disabled:focus, button[disabled]:hover, button[disabled]:focus, #dealThree:disabled, #dealThree:disabled:hover {
+button:disabled, button[disabled], button:disabled:hover, button:disabled:focus, button[disabled]:hover, button[disabled]:focus, #dealThree:disabled, #dealThree:disabled:hover, #testSet:disabled, #testSet:disabled:hover {
   background-color: #7e7e7e;
   color: #575757;
   cursor: not-allowed;
@@ -198,11 +201,12 @@ button:disabled, button[disabled], button:disabled:hover, button:disabled:focus,
 }
 
 #allCards canvas:hover {
-  box-shadow: 0 0 15px #e38800;
+  box-shadow: 0 0 20px #e38800;
   cursor: pointer;
 }
 div.selectedCard canvas {
-  box-shadow: 0 0 15px #d0c400;
+  /* box-shadow: 0 0 15px #d0c400;*/
+  box-shadow: 0 0 20px #f5cc00;
   cursor: pointer;
 }
 
