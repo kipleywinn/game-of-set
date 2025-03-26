@@ -131,6 +131,8 @@ const playerScoresDiv = document.querySelector("#playerScores");
 const numberOfPlayersSelect = document.querySelector("#numberOfPlayers");
 const playerNamesInputsDiv = document.querySelector("#playerNamesInputs");
 const newGameContinueButton = document.querySelector("#newGameContinue");
+const pauseButton = document.querySelector("#pauseButton");
+const resumeButton = document.querySelector("#resumeButton");
 
 
 ////////////////// BUILD THE CARD DECK
@@ -221,6 +223,19 @@ function dealRestart() {
 
   startGamePlayerScoresArray();
   displayPlayerScoresArray();
+
+  pauseTimer();
+  newTimerInstance();
+
+  pauseButton.disabled = false;
+  unselectAllCardsButton.disabled = false;
+  shuffleRemainingButton.disabled = false;
+  getAHintButton.disabled = false;
+  pauseButton.classList.remove("hidden");
+  resumeButton.classList.add("hidden");
+  allCardsDiv.classList.remove("paused");
+  checkSetButton.disabled = false;
+
 }
 
 let currentPlayerScoresArray = [];
@@ -588,12 +603,15 @@ function newGame() {
   playerScoresDiv.innerHTML = "";
   allCardsDiv.innerHTML = "";
   howManyPlayers();
+  clearTimeout(theTimer);
+  document.getElementById("gameTimer").innerHTML = "";
 }
 
 
-/////// NEW TIMER FUNCTION
-let startTime = Math.floor(Date.now() / 1000); //Get the starting time (right now) in seconds
-localStorage.setItem("startTime", startTime); // Store it if I want to restart the timer on the next page
+/////// TIMER FUNCTION
+let startTime; // = Math.floor(Date.now() / 1000); //Get the starting time (right now) in seconds
+let theTimer;
+let elapsedTime = 0;
 
 function startTimeCounter() {
   let now = Math.floor(Date.now() / 1000); // get the time now
@@ -602,8 +620,8 @@ function startTimeCounter() {
   let s = Math.floor(diff % 60); // get seconds value (remainder of diff)
   m = checkTime(m); // add a leading zero if it's single digit
   s = checkTime(s); // add a leading zero if it's single digit
-  document.getElementById("gameTimer").innerHTML = `${m}:${s}`; // update the element where the timer will appear
-  let t = setTimeout(startTimeCounter, 1000); // set a timeout to update the timer
+  document.getElementById("gameTimer").innerHTML = `Game Timer: ${m}:${s}`; // update the element where the timer will appear
+  return theTimer = setTimeout(startTimeCounter, 1000); // set a timeout to update the timer
 }
 
 function checkTime(i) {
@@ -611,7 +629,36 @@ function checkTime(i) {
   return i;
 }
 
-startTimeCounter();
+function newTimerInstance() {
+  startTime = Math.floor(Date.now() / 1000);
+  elapsedTime = 0;
+  startTimeCounter();
+}
+
+function pauseTimer() {
+  clearTimeout(theTimer);
+  let now = Math.floor(Date.now() / 1000); // get the time now
+  return elapsedTime = now - startTime;
+}
+
+function pauseGame() {
+  pauseTimer();
+  resumeButton.classList.remove("hidden");
+  pauseButton.classList.add("hidden");
+  allCardsDiv.classList.add("paused");
+}
+
+function resumeGame() {
+  startTime = (Math.floor(Date.now() / 1000)) - elapsedTime;
+  startTimeCounter();
+  resumeButton.classList.add("hidden");
+  pauseButton.classList.remove("hidden");
+  allCardsDiv.classList.remove("paused");
+}
+
+
+
+
 
 
 
@@ -647,7 +694,8 @@ dealRestartButton.addEventListener("mouseout", () => {
 
 newGameButton.addEventListener("click", newGame);
 
-
+pauseButton.addEventListener("click", pauseGame);
+resumeButton.addEventListener("click", resumeGame);
 
 
 
